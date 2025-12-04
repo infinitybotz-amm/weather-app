@@ -1,0 +1,116 @@
+# 🌤️ Weather App - Quick Reference
+
+## Installation
+```bash
+cd /Users/dhruvika/Documents/Workspace/weather-app
+python3 -m pip install -r requirements.txt
+```
+
+## Usage
+
+### Simple Version (One-liner)
+```bash
+python3 weather_simple.py
+# Enter city name → See instant weather
+```
+
+### Interactive Version (Menu-driven)
+```bash
+python3 weather_app.py
+# 1. Get weather | 2. Plain text | 3. Exit
+```
+
+### Web Version (Beautiful UI)
+```bash
+python3 weather_flask_app.py
+# Visit: http://localhost:5000
+```
+
+---
+
+## Sample Output
+
+### CLI Output
+```
+🌍 Weather in London
+Temperature: 7°C (45°F)
+Condition: Overcast
+Wind Speed: 20 km/h
+Humidity: 93%
+Feels Like: 4°C
+```
+
+### Web Features
+- 🔍 City search
+- 📍 Location-based weather
+- 📊 Beautiful weather cards
+- 💾 Recent searches history
+- 📱 Mobile responsive
+
+---
+
+## Files Created
+
+| File | Purpose | Size |
+|------|---------|------|
+| weather_simple.py | Quick lookup | ~80 lines |
+| weather_app.py | Interactive CLI | ~250 lines |
+| weather_flask_app.py | Web server | ~100 lines |
+| templates/weather.html | Web UI | ~350 lines |
+| static/style.css | Web styling | ~600 lines |
+| static/script.js | Web functionality | ~300 lines |
+| requirements.txt | Dependencies | 2 packages |
+| README.md | Full docs | ~400 lines |
+| QUICKSTART.md | Quick setup | ~200 lines |
+| ARCHITECTURE.md | Technical details | ~400 lines |
+
+---
+
+## API Details
+
+**Service:** wttr.in (free weather API)  
+**Endpoint:** `https://wttr.in/{city}?format=j1`  
+**Auth:** None (no API key needed)  
+**Coverage:** 15,000+ cities worldwide  
+
+---
+
+## Troubleshooting
+
+| Issue | Fix |
+|-------|-----|
+| ModuleNotFoundError | `pip install requests` |
+| City not found | Use English name or "City, Country" |
+| Timeout | Check internet connection |
+| Port 5000 busy | Change port in weather_flask_app.py |
+
+---
+
+## Example Uses
+
+**Get weather for any city:**
+```python
+from weather_app import WeatherApp
+app = WeatherApp()
+app.display_current_weather("Paris")
+```
+
+**Integrate into your code:**
+```python
+data = app.get_weather_json("Tokyo")
+temp = data['current_condition'][0]['temp_C']
+```
+
+---
+
+## Next Steps
+
+✅ Installation complete  
+✅ Run any version (CLI or Web)  
+✅ Try different cities  
+✅ Explore the web interface  
+✅ Integrate into your projects  
+
+---
+
+**Happy weather tracking! 🌍**

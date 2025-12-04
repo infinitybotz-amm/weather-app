@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App | Real-time Weather Data</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>🌤️ Weather App</h1>
+            <p class="subtitle">Get real-time weather data from anywhere</p>
+        </header>
+
+        <!-- Search Section -->
+        <div class="search-section">
+            <input 
+                type="text" 
+                id="cityInput" 
+                class="search-input" 
+                placeholder="Enter city name (e.g., London, New York, Tokyo)"
+                autocomplete="off"
+            >
+            <button id="searchBtn" class="search-btn">Search</button>
+            <button id="currentLocationBtn" class="location-btn">📍 Current Location</button>
+        </div>
+
+        <!-- Error Message -->
+        <div id="errorMsg" class="error-message"></div>
+
+        <!-- Loading Spinner -->
+        <div id="loading" class="loading hidden">
+            <div class="spinner"></div>
+            <p>Fetching weather data...</p>
+        </div>
+
+        <!-- Weather Display -->
+        <div id="weatherResult" class="weather-result hidden">
+            <!-- Header Info -->
+            <div class="weather-header">
+                <div>
+                    <h2 id="cityName" class="city-name">-</h2>
+                    <p id="countryName" class="country-name">-</p>
+                    <p id="lastUpdated" class="timestamp">-</p>
+                </div>
+                <div class="weather-icon">
+                    <span id="weatherCondition" class="condition-text">-</span>
+                </div>
+                <!-- suggestions-toggle removed: suggestions will display automatically -->
+            </div>
+
+            <!-- Suggestions Section -->
+            <div id="suggestionsSection" class="suggestions-section hidden">
+                <h3>Places to visit</h3>
+                <div id="suggestionsList" class="suggestions-list"></div>
+            </div>
+
+            <!-- Main Weather Cards -->
+            <div class="weather-grid">
+                <!-- Temperature Card -->
+                <div class="weather-card primary">
+                    <h3>Temperature</h3>
+                    <div class="temp-display">
+                        <span id="temperature" class="temp-value">-</span>
+                        <span class="temp-unit">°C</span>
+                    </div>
+                    <p id="temperatureF" class="temp-alternate">-°F</p>
+                    <p id="feelsLike" class="feels-like">Feels like: -°C</p>
+                </div>
+
+                <!-- Condition Card -->
+                <div class="weather-card">
+                    <h3>Condition</h3>
+                    <p id="conditionText" class="condition-large">-</p>
+                </div>
+
+                <!-- Wind Card -->
+                <div class="weather-card">
+                    <h3>💨 Wind Speed</h3>
+                    <div class="value-large" id="windSpeed">-</div>
+                    <p class="unit">km/h</p>
+                </div>
+
+                <!-- Humidity Card -->
+                <div class="weather-card">
+                    <h3>💧 Humidity</h3>
+                    <div class="progress-bar">
+                        <div id="humidityBar" class="progress" style="width: 0%"></div>
+                    </div>
+                    <p class="unit" id="humidityText">-%</p>
+                </div>
+
+                <!-- Visibility Card -->
+                <div class="weather-card">
+                    <h3>👁️ Visibility</h3>
+                    <div class="value-large" id="visibility">-</div>
+                    <p class="unit">km</p>
+                </div>
+
+                <!-- Pressure Card -->
+                <div class="weather-card">
+                    <h3>🌫️ Pressure</h3>
+                    <div class="value-large" id="pressure">-</div>
+                    <p class="unit">mb</p>
+                </div>
+
+                <!-- Cloud Cover Card -->
+                <div class="weather-card">
+                    <h3>☁️ Cloud Cover</h3>
+                    <div class="progress-bar">
+                        <div id="cloudBar" class="progress" style="width: 0%"></div>
+                    </div>
+                    <p class="unit" id="cloudText">-%</p>
+                </div>
+
+                <!-- Precipitation Card -->
+                <div class="weather-card">
+                    <h3>🌧️ Precipitation</h3>
+                    <div class="value-large" id="precipitation">-</div>
+                    <p class="unit">mm</p>
+                </div>
+
+                <!-- UV Index Card -->
+                <div class="weather-card">
+                    <h3>☀️ UV Index</h3>
+                    <div class="value-large" id="uvIndex">-</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recent Searches -->
+        <div class="recent-section">
+            <h3>Recent Searches</h3>
+            <div id="recentSearches" class="recent-list"></div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
