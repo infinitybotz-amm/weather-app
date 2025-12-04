@@ -126,11 +126,17 @@ function displayWeather(data) {
         // make sure suggestions are hidden until user opens them
         if (section) section.classList.add('hidden');
         if (showBtn) {
+            // remove any 'hidden' class and set inline display to be robust across builds/caches
+            showBtn.classList.remove('hidden');
             showBtn.style.display = 'inline-block';
             showBtn.textContent = 'Places to visit';
+            console.log('[weather] Showing suggestions toggle (count:', currentSuggestions.length, ')');
         }
     } else {
-        if (showBtn) showBtn.style.display = 'none';
+        if (showBtn) {
+            showBtn.classList.add('hidden');
+            showBtn.style.display = 'none';
+        }
         if (section) section.classList.add('hidden');
     }
 
@@ -275,7 +281,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const showSuggestionsBtn = document.getElementById('showSuggestionsBtn');
     if (showSuggestionsBtn) {
         // start hidden until a search returns suggestions
+        showSuggestionsBtn.classList.add('hidden');
         showSuggestionsBtn.style.display = 'none';
+        console.log('[weather] showSuggestionsBtn wired on DOMContentLoaded');
         showSuggestionsBtn.addEventListener('click', () => {
             const section = document.getElementById('suggestionsSection');
             if (!section) return;
