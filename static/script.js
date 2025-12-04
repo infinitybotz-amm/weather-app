@@ -4,7 +4,7 @@
 const appState = {
     recentSearches: JSON.parse(localStorage.getItem('recentSearches')) || []
 };
-
+// Murali: Added to manage recent searches
 // DOM Elements
 const cityInput = document.getElementById('cityInput');
 const searchBtn = document.getElementById('searchBtn');
